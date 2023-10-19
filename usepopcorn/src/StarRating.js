@@ -11,8 +11,8 @@ const StarContainerStyle = {
 };
 
 const StarStyle = {
-  width: "68px",
-  height: "68px",
+  width: "38px",
+  height: "38px",
   cursor: "pointer",
   color: "#fcc419",
 };
@@ -37,7 +37,7 @@ export default function StarRating({
     lineHeight: "1",
     margin: "0",
     color,
-    fontSize: `${size / 2.5}px`,
+    fontSize: `${size / 1.2}px`,
   };
   return (
     <div style={containerStyle}>
