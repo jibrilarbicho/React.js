@@ -30,6 +30,7 @@ export default function StarRating({
   size = 48,
   messages = [],
   defrating = 3,
+  onsetRating,
 }) {
   const [rating, setrating] = useState(defrating);
   const [tempRating, settempRating] = useState(0);
@@ -45,7 +46,10 @@ export default function StarRating({
         {Array.from({ length: maxrating }, (_, i) => (
           <Star
             key={i}
-            onclick={() => setrating(i + 1)}
+            onclick={() => {
+              setrating(i + 1);
+              onsetRating(i + 1);
+            }}
             full={tempRating ? tempRating >= i + 1 : rating >= i + 1}
             OnhoverIn={() => settempRating(i + 1)}
             OnhoverOut={() => settempRating(0)}
