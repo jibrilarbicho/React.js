@@ -305,8 +305,16 @@ function MoviDetail({ selectedID, onclosemovie, onadwatched, watched }) {
     },
     [selectedID]
   );
-  if (!title) return;
-  else document.title = `Movie ${title}`;
+  useEffect(
+    function () {
+      if (!title) return;
+      document.title = `Movie ${title}`;
+      return function () {
+        document.title = "Usepopcorn";
+      };
+    },
+    [title]
+  );
 
   return (
     <div className="details">
