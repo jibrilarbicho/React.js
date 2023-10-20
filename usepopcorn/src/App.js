@@ -70,6 +70,7 @@ export default function App() {
   function hanledeletewatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
+
   useEffect(
     function () {
       const controller = new AbortController();
@@ -284,6 +285,22 @@ function MoviDetail({ selectedID, onclosemovie, onadwatched, watched }) {
     Director: director,
     Genre: genre,
   } = movie;
+
+  useEffect(
+    function () {
+      function callback(e) {
+        if (e.code === "Escape") {
+          console.log("CLOSING");
+          onclosemovie();
+        }
+      }
+      document.addEventListener("keydown", callback);
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onclosemovie]
+  );
   function hanleAdd() {
     const newwatched = {
       imdbID: selectedID,
