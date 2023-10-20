@@ -53,11 +53,16 @@ export default function App() {
   const [query, setQuery] = useState("interstellar");
 
   const [movies, setMovies] = useState([]);
-  const [watched, setWatched] = useState([]);
+  // const [watched, setWatched] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedID, setSelectedID] = useState(null);
   const tempQuery = "interstellar";
+  const [watched, setWatched] = useState(function () {
+    const stored = localStorage.getItem("watched");
+    return JSON.parse(stored);
+  });
+
   function handleselectedmovie(id) {
     setSelectedID((selectedID) => (selectedID === id ? null : id));
   }
@@ -70,7 +75,12 @@ export default function App() {
   function hanledeletewatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
-
+  useEffect(
+    function () {
+      localStorage.setItem("watched", JSON.stringify(watched));
+    },
+    [watched]
+  );
   useEffect(
     function () {
       const controller = new AbortController();
