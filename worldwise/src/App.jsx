@@ -9,6 +9,7 @@ import "./index.css";
 import AppLayout from "./pages/AppLayout";
 import CityList from "./Components/CityList";
 import CountryList from "./Components/CountryList";
+import City from "./Components/City";
 import { useState } from "react";
 const BaseUrl = "http://localhost:9000";
 export default function App() {
@@ -45,6 +46,7 @@ export default function App() {
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
           />
+          <Route path="cities/:id" element={<City />} />
           <Route
             path="countries"
             element={<CountryList />}
