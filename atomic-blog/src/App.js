@@ -49,6 +49,7 @@ function Header() {
         <button onClick={onClearPosts}>Clear posts</button>
       </div>
     </header>
+    //
   );
 }
 
