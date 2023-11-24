@@ -11,6 +11,7 @@ import CityList from "./Components/CityList";
 import CountryList from "./Components/CountryList";
 import City from "./Components/City";
 import { useState } from "react";
+import { Form } from "react-router-dom";
 const BaseUrl = "http://localhost:9000";
 export default function App() {
   const [cities, setCities] = useState([]);
@@ -55,6 +56,7 @@ export default function App() {
           />
           <Route path="form" element={<p>form </p>} />
         </Route>
+        <Route path="form" element={<Form />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
